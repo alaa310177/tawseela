@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="منصة توصيلة - طلبات المحلات مع خدمة التوصيل">
+    <title>توصيلة | طلبات المحلات</title>
+    
+    <!-- ملفات CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ==================== شريط التنقل العلوي ==================== -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-shopping-basket"></i>
+                <span>توصيلة</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#home" class="active">الرئيسية</a>
+                <a href="#groceries">المحلات</a>
+                <a href="#offers">العروض</a>
+                <a href="#join-us">انضم إلينا</a>
+                <a href="#cart" class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="#user" class="user-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+            
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== قسم البطل (Hero Section) ==================== -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>أفضل المحلات <span>في مكان واحد</span></h1>
+                <p>استمتع بتجربة تسوق فريدة مع أسرع خدمة توصيل. اختر من بين أفضل المحلات في حمورية</p>
+                
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="ابحث عن منتج... سكر، رز، زيت...">
+                    <button class="btn-search">بحث</button>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <a href="https://wa.me/963998028910?text=مرحباً،%20بك %20في%20توصيلة" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <span>12</span>
+                        <p>ساعة للتواصل</p>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>30</span>
+                        <p>دقيقة للتوصيل</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="images/توصية لوغو.jpg" alt="توصيلة">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== المحلات ==================== -->
+    <section class="groceries-section" id="groceries">
+        <div class="container">
+            <div class="section-header">
+                <h2>🏪 محلات ومتاجر</h2>
+                <p>كل ما تحتاجه لمطبخك ومنزلك</p>
+            </div>
+            
+            <div class="groceries-grid" id="groceries-container">
+                <!-- سيتم إضافة المحلات عبر JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== العروض الخاصة ==================== -->
+    <section class="offers-section" id="offers">
+        <div class="container">
+            <div class="section-header">
+                <h2>🎉 عروض حصرية</h2>
+                <p>خصومات تصل إلى 60% لفترة محدودة</p>
+            </div>
+            
+            <div class="offers-grid" id="offers-container">
+                <!-- سيتم إضافة العروض عبر JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== قسم انضم إلينا (للمحلات) ==================== -->
+    <section class="join-us-section" id="join-us">
+        <div class="container">
+            <div class="join-us-container">
+                <div class="join-us-content">
+                    <div class="join-us-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h2>هل تمتلك محلاً وترغب بالانضمام إلينا؟</h2>
+                    <p>انضم إلى منصة توصيلة ووصل لعملاء جدد في منطقتك. نوفر لك خدمة توصيل سريعة وموثوقة</p>
+                    
+                    <div class="join-us-features">
+                        <div class="feature">
+                            <i class="fas fa-chart-line"></i>
+                            <span>زيادة المبيعات</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>وصول لعملاء جدد</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-truck"></i>
+                            <span>خدمة توصيل متكاملة</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <span>دعم فني على مدار الساعة</span>
+                        </div>
+                    </div>
+                    
+                    <div class="join-us-buttons">
+                        <a href="https://wa.me/963998028910?text=مرحباً،%20أرغب%20بالانضمام%20إلى%20منصة%20توصيلة%20كصاحب%20محل" target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            تواصل عبر واتساب
+                        </a>
+                        <a href="tel:0998028910" class="btn-call">
+                            <i class="fas fa-phone-alt"></i>
+                            اتصل بنا
+                        </a>
+                    </div>
+                    
+                    <div class="join-us-note">
+                        <i class="fas fa-info-circle"></i>
+                        <span>سيتم التواصل معك خلال 24 ساعة لتأكيد بياناتك وإضافة محلك إلى المنصة</span>
+                    </div>
+                </div>
+                
+                <div class="join-us-image">
+                    <img src="images/توصيل محلات.jpg" alt="انضم إلينا" onerror="this.src='https://via.placeholder.com/400x300/FF6B35/FFFFFF?text=انضم+إلينا'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== كيفية العمل ==================== -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>📦 كيف يعمل الموقع؟</h2>
+                <p>ثلاث خطوات بسيطة للحصول على طلبك</p>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-search"></i>
+                    <h3>اختر المحل</h3>
+                    <p>تصفح المحلات واختر ما يناسب احتياجاتك</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-cart-plus"></i>
+                    <h3>أضف إلى السلة</h3>
+                    <p>اختر المنتجات التي تريدها وأضفها إلى سلة المشتريات</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-truck"></i>
+                    <h3>استلم طلبك</h3>
+                    <p>اختر طريقة التوصيل واستمتع بمشترياتك بأسرع وقت</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== سلة المشتريات (Sidebar) ==================== -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>
+                <i class="fas fa-shopping-cart"></i>
+                سلة المشتريات
+            </h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-basket"></i>
+                <p>🛒 سلة المشتريات فارغة</p>
+                <span>أضف بعض المنتجات للبدء</span>
+            </div>
+        </div>
+        
+        <div class="cart-footer">
+            <div class="delivery-options">
+                <h4>🚚 طريقة الاستلام</h4>
+                <div class="delivery-option" data-value="delivery" onclick="setDeliveryOption('delivery')">
+                    <i class="fas fa-truck"></i>
+                    <div class="delivery-info">
+                        <span>توصيل للمنزل ضمن حمورية</span>
+                        <small>عمولة التوصيل 10% من قيمة الطلب</small>
+                    </div>
+                </div>
+                <div class="delivery-option" data-value="pickup" onclick="setDeliveryOption('pickup')">
+                    <i class="fas fa-store"></i>
+                    <div class="delivery-info">
+                        <span>استلام شخصي</span>
+                        <small>مجاناً</small>
+                    </div>
+                </div>
+                <div class="delivery-option" data-value="reservation" onclick="setDeliveryOption('reservation')">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div class="delivery-info">
+                        <span>حجز مسبق</span>
+                        <small>مجاناً</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart-total" id="cart-total">
+                <div class="total-row">
+                    <span>🛍️ المجموع الفرعي:</span>
+                    <span>0 ليرة جديدة</span>
+                </div>
+                <div class="total-row">
+                    <span>🚚 رسوم التوصيل:</span>
+                    <span>0 ليرة جديدة</span>
+                </div>
+                <div class="total-row grand-total">
+                    <span>💰 الإجمالي:</span>
+                    <span>0 ليرة جديدة</span>
+                </div>
+            </div>
+            
+            <button class="btn-checkout" onclick="checkout()">
+                <i class="fas fa-check-circle"></i>
+                إتمام الطلب
+            </button>
+        </div>
+    </div>
+    
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- ==================== تذييل الصفحة ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-shopping-basket"></i>
+                        <span>توصيلة</span>
+                    </div>
+                    <p>أفضل منصة لطلب مستلزمات المنزل مع خدمة توصيل سريعة وآمنة</p>
+                    <div class="social-links">
+                        <a href="#" data-social="facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" data-social="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" data-social="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" data-social="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#groceries">المحلات</a></li>
+                        <li><a href="#offers">العروض</a></li>
+                        <li><a href="#join-us">انضم إلينا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>خدمات العملاء</h4>
+                    <ul>
+                        <li><a href="#" data-footer="call">اتصل بنا</a></li>
+                        <li><a href="#" data-footer="faq">الأسئلة الشائعة</a></li>
+                        <li><a href="#" data-footer="privacy">سياسة الخصوصية</a></li>
+                        <li><a href="#" data-footer="terms">شروط الاستخدام</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>معلومات الاتصال</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> 0998028910</li>
+                        <li><i class="fas fa-map-marker-alt"></i> حمورية، سوريا</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 توصيلة - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ملف JavaScript -->
+    <script src="js/main.js"></script>
+    
+    <!-- دوال إضافية للواجهة -->
+    <script>
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            if (sidebar && overlay) {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+        }
+        
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+            }
+        }
+        
+        function setDeliveryOption(option) {
+            if (window.orderSystem) {
+                window.orderSystem.setDeliveryOption(option);
+            }
+        }
+        
+        function checkout() {
+            if (window.orderSystem) {
+                window.orderSystem.checkout();
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav-links')?.classList.remove('active');
+                });
+            });
+            
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (navbar) {
+                    if (window.scrollY > 100) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
