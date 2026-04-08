@@ -2,20 +2,77 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="منصة توصيلة - طلبات المحلات مع خدمة التوصيل">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="توصيلة - طلبات المحلات مع خدمة التوصيل السريعة">
+    <meta name="theme-color" content="#8e3981">
     <title>توصيلة | طلبات المحلات</title>
     
     <!-- ملفات CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
     
     <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* تنسيقات إضافية سريعة */
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid var(--gray);
+            background: var(--white);
+            transition: var(--transition-fast);
+        }
+        .menu-item:hover {
+            background: #FFF8F5;
+        }
+        .menu-item-info {
+            flex: 1;
+        }
+        .menu-item-info h3 {
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-size: var(--font-size-md);
+        }
+        .menu-item-info .price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: var(--font-size-md);
+            margin-top: 5px;
+        }
+        .menu-item-info .description {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+        .btn-add {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-weight: 600;
+        }
+        .btn-add:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        .cart-footer {
+            padding: var(--spacing-md);
+            background: var(--white);
+            border-top: 2px solid var(--gray);
+        }
+        .cart-footer h4 {
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+    </style>
 </head>
 <body>
     <!-- ==================== شريط التنقل العلوي ==================== -->
@@ -61,7 +118,7 @@
                 
                 <div class="hero-stats">
                     <div class="stat">
-                        <a href="https://wa.me/963998028910?text=مرحباً،%20بك %20في%20توصيلة" target="_blank">
+                        <a href="https://wa.me/963998028910?text=مرحباً،%20بك%20في%20توصيلة" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                         <span>12</span>
@@ -76,7 +133,7 @@
             </div>
             
             <div class="hero-image">
-                <img src="images/توصية لوغو.jpg" alt="توصيلة">
+                <img src="images/توصية لوغو.jpg" alt="توصيلة" onerror="this.src='https://placehold.co/500x500/8e3981/white?text=توصيلة'">
             </div>
         </div>
     </section>
@@ -157,7 +214,7 @@
                 </div>
                 
                 <div class="join-us-image">
-                    <img src="images/توصيل محلات.jpg" alt="انضم إلينا" onerror="this.src='https://via.placeholder.com/400x300/FF6B35/FFFFFF?text=انضم+إلينا'">
+                    <img src="images/توصيل محلات.jpg" alt="انضم إلينا" onerror="this.src='https://placehold.co/400x300/8e3981/white?text=انضم+إلينا'">
                 </div>
             </div>
         </div>
@@ -314,7 +371,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>© 2026 توصيلة - جميع الحقوق محفوظة</p>
+                <p>© 2025 توصيلة - جميع الحقوق محفوظة</p>
             </div>
         </div>
     </footer>
@@ -330,6 +387,12 @@
             if (sidebar && overlay) {
                 sidebar.classList.toggle('active');
                 overlay.classList.toggle('active');
+                // منع التمرير في الخلف عند فتح السلة
+                if (sidebar.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
             }
         }
         
@@ -353,12 +416,14 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
+            // إغلاق القائمة عند الضغط على رابط
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
                     document.querySelector('.nav-links')?.classList.remove('active');
                 });
             });
             
+            // تأثير شريط التنقل عند التمرير
             window.addEventListener('scroll', () => {
                 const navbar = document.querySelector('.navbar');
                 if (navbar) {
@@ -368,6 +433,53 @@
                         navbar.classList.remove('scrolled');
                     }
                 }
+            });
+            
+            // تحديث سنة حقوق النشر
+            const footerBottom = document.querySelector('.footer-bottom p');
+            if (footerBottom) {
+                const year = new Date().getFullYear();
+                footerBottom.innerHTML = footerBottom.innerHTML.replace('2025', year);
+            }
+            
+            // روابط السوشال ميديا
+            const socialUrls = {
+                'facebook': 'https://www.facebook.com/profile.php?id=61573960290258',
+                'instagram': 'https://www.instagram.com/tawaselasy',
+                'twitter': 'https://twitter.com/tawaselasy',
+                'whatsapp': 'https://wa.me/963998028910?text=مرحباً، بك في توصيلة'
+            };
+            
+            document.querySelectorAll('.social-links a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const social = link.getAttribute('data-social');
+                    if (social && socialUrls[social]) {
+                        window.open(socialUrls[social], '_blank');
+                    }
+                });
+            });
+            
+            // روابط الفوتر
+            document.querySelectorAll('[data-footer]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const action = link.getAttribute('data-footer');
+                    switch(action) {
+                        case 'call':
+                            window.location.href = 'tel:0998028910';
+                            break;
+                        case 'faq':
+                            alert(`📋 الأسئلة الشائعة:\n\n❓ كيف يمكنني طلب منتج؟\n💡 اختر المنتج من المحلات، أضفه للسلة، ثم أكمل الطلب.\n\n❓ ما هي طرق الدفع؟\n💡 الدفع عند الاستلام نقداً.\n\n❓ كم تستغرق عملية التوصيل؟\n💡 التوصيل خلال 20-30 دقيقة.\n\n❓ هل التوصيل مجاني؟\n💡 التوصيل مجاني للطلبات فوق 1000 ليرة ضمن حمورية\n\n📞 للاستفسار: 0998028910`);
+                            break;
+                        case 'privacy':
+                            alert(`🔒 سياسة الخصوصية:\n\nنحن في توصيلة نلتزم بحماية خصوصية بياناتك. يتم استخدام معلوماتك فقط لتوصيل الطلبات وتحسين الخدمة.`);
+                            break;
+                        case 'terms':
+                            alert(`📜 شروط الاستخدام:\n\n1. الطلبات غير قابلة للاسترجاع بعد التوصيل.\n2. الحد الأدنى للطلب 500 ليرة.\n3. الأسعار تشمل الضريبة.\n4. نضمن جودة المنتجات من المحلات المعتمدة.`);
+                            break;
+                    }
+                });
             });
         });
     </script>
